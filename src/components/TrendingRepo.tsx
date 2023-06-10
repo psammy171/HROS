@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { getTrendingRepo, trendingRepoActions } from '../store/TrendingRepoSlice';
@@ -10,6 +10,12 @@ import forkIcon from '../assets/fork.png'
 import Loading from './Loading';
 
 const TrendingRepo = () => {
+    const navigate = useNavigate()
+
+    if(!localStorage.getItem('accessToken')){
+        navigate('/')
+    }
+
     const dispatch = useDispatch()
     const trendingRepos = useSelector((state:any) => state.trendingRepo.trending)
     const fetching = useSelector((state:any) => state.trendingRepo.fetching)

@@ -5,8 +5,15 @@ import { getRepoDetails } from "../store/RepoSlice";
 import starIcon from '../assets/star.png';
 import forkIcon from '../assets/fork.png';
 import Loading from "./Loading";
+import { useNavigate } from "react-router-dom";
 
 const RepoDetail = () => {
+    const navigate = useNavigate()
+
+    if(!localStorage.getItem('accessToken')){
+        navigate('/')
+    }
+    
     const dispatch = useDispatch()
     const { organisation, repository} = useParams()
     const repo = useSelector((state:any) => state.repo)
