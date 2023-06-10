@@ -24,7 +24,7 @@ const Header = () => {
         {accessToken && 
         <>
             <Link to="/" className='text-2xl font-semibold'>Home</Link>
-            <Link to="/trending" className='text-2xl font-semibold px-3'>Trending</Link>
+            <Link to="/repo" className='text-2xl font-semibold px-3'>Trending</Link>
             <div className='flex-1'></div>
             <p className='text-2xl font-semibold px-3 truncate'>{userName}</p>
             <img className='h-[25px] px-3' src={userAvatar} alt="avatar"/>

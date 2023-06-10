@@ -48,7 +48,7 @@ const TrendingRepo = () => {
         {!fetching && trendingRepos?.length > 0 && <>{
             trendingRepos.map((repo:any,index:number) => (
             <div key={index} className='shadow-lg flex flex-col items-start p-3 my-6'>
-                <Link to={`/${repo.organisation}/${repo.repository}`}><p className='text-xl flex items-center mb-2 font-semibold truncate'><img src={repoIcon} className='h-[20px] px-3'  alt="repo"/>{repo.repository}</p></Link>
+                <Link to={`${repo.organisation}/${repo.repository}`}><p className='text-xl flex items-center mb-2 font-semibold truncate'><img src={repoIcon} className='h-[20px] px-3'  alt="repo"/>{repo.repository}</p></Link>
                 <p className='text-xl flex items-center mb-2'><img src={organisation} className='h-[20px] px-3 truncate'  alt="org"/>{repo.organisation}</p>
                 <p className='text-base flex items-center mb-2'></p>
                 <div className='flex'>

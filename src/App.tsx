@@ -40,8 +40,8 @@ const App = () => {
       <Header />
       <Routes>
         <Route path="/" element={<Home/>}/>
-        <Route path="/trending" element={<TrendingRepo/>}/>
-        <Route path="/:organisation/:repository" element={<RepoDetail/>}/>
+        <Route path="/repo" element={<TrendingRepo/>}/>
+        <Route path="repo/:organisation/:repository" element={<RepoDetail/>}/>
         <Route path="/*" element={<NotFound/>}/>
       </Routes>
     </div>
