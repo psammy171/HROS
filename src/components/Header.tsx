@@ -38,6 +38,11 @@ const Header = (props:any) => {
         {!accessToken && 
         <>
             <div className='flex-1'></div>
+            <div className={`h-[20px] w-[40px] rounded-[10px]  bg-[#ffffff] flex ${props.mode === 'dark' ? 'justify-end' : 'justify-start'} mx-3`} onClick={() => props.toggleMode()}>
+                <div className='h-[16px] w-[16px] bg-[#11710d] rounded-full m-[2px] dark:bg-[#0f172a]'>
+
+                </div>
+            </div>
             <button onClick={() => loginWithGithub()} className='text-2xl font-semibold dark:text-[#ffffff]'>Login</button>
         </>}
     </div>)
