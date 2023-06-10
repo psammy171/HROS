@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
-import './App.css';
 import Header from './components/Header';
 import { useDispatch, useSelector } from 'react-redux';
 import { authActions } from './store/AuthSlice';
 import { getAccessToken } from './store/AuthSlice';
 import { getUserDetails } from './store/AuthSlice';
-import { Routes, Route} from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Home from './components/Home';
 import TrendingRepo from './components/TrendingRepo';
 import RepoDetail from './components/RepoDetail';
@@ -36,7 +35,7 @@ const App = () => {
   },[isAuthenticated,dispatch])
 
   return (
-    <div className="App">
+    <div>
       <Header />
       <Routes>
         <Route path="/" element={<Home/>}/>

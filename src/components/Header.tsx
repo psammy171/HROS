@@ -20,14 +20,21 @@ const Header = () => {
         dispatch(authActions.logout())
     }
 
-    return (<div>
-        {accessToken && <>
-            <Link to="/">Home</Link>
-            <h2>{userName}</h2>
-            <img width="40px" height="40px" src={userAvatar} alt="avatar"/>
-            <Link to="/" onClick={() => logout()}>Logout</Link>
+    return (<div className='flex items-center text-white px-[17%] max-md:px-[10%] max-sm:px-[5%] h-[50px] bg-[#11710d] sticky top-0'>
+        {accessToken && 
+        <>
+            <Link to="/" className='text-2xl font-semibold'>Home</Link>
+            <Link to="/trending" className='text-2xl font-semibold px-3'>Trending</Link>
+            <div className='flex-1'></div>
+            <p className='text-2xl font-semibold px-3 truncate'>{userName}</p>
+            <img className='h-[25px] px-3' src={userAvatar} alt="avatar"/>
+            <Link to="/" onClick={() => logout()} className='text-2xl font-semibold'>Logout</Link>
         </>}
-        {!accessToken && <button onClick={() => loginWithGithub()}>Login</button>}
+        {!accessToken && 
+        <>
+            <div className='flex-1'></div>
+            <button onClick={() => loginWithGithub()} className='text-2xl font-semibold'>Login</button>
+        </>}
     </div>)
 }
 

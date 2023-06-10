@@ -34,6 +34,7 @@ export const getRepoDetails:any = (organisation:String, repository:String) => {
         fetch('http://localhost:4000/' + organisation + '/' + repository)
         .then(response => response.json())
         .then(data => {
+            console.log(data)
             dispatch(repoActions.setRepo({...data,repository,organisation,}))
             dispatch(repoActions.setFetching(false))
         }).catch(err => {
