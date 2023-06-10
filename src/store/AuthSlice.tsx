@@ -2,7 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     isAuthenticated:false,
-    accessToken:'',
     userName:'',
     userAvatarLink:''
 }
@@ -16,6 +15,8 @@ const authSlice = createSlice({
         },
         logout(state){
             state.isAuthenticated = false
+            state.userName = ''
+            state.userAvatarLink = ''
         },
         setName(state,action){
             state.userName = action.payload.userName

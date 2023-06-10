@@ -5,8 +5,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { authActions } from './store/AuthSlice';
 import { getAccessToken } from './store/AuthSlice';
 import { getUserDetails } from './store/AuthSlice';
+import { Routes, Route} from 'react-router-dom';
+import Home from './components/Home';
+import TrendingRepo from './components/TrendingRepo';
 
-const CLIENT_ID = "54bef3e167b607bc6edb"
 
 const App = () => {
   const dispatch = useDispatch()
@@ -32,12 +34,13 @@ const App = () => {
     }
   },[isAuthenticated,dispatch])
 
-  const loginWithGithub = () => {
-    window.location.assign('https://github.com/login/oauth/authorize?client_id=' + CLIENT_ID)
-  }
   return (
     <div className="App">
-      <Header loginWithGithub={loginWithGithub}/>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+        <Route path="/trending" element={<TrendingRepo/>}/>
+      </Routes>
     </div>
   );
 }
