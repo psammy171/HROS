@@ -1,24 +1,43 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect } from 'react';
 import './App.css';
+import Header from './components/Header';
+import { useDispatch, useSelector } from 'react-redux';
+import { authActions } from './store/AuthSlice';
+import { getAccessToken } from './store/AuthSlice';
+import { getUserDetails } from './store/AuthSlice';
 
-function App() {
+const CLIENT_ID = "54bef3e167b607bc6edb"
+
+const App = () => {
+  const dispatch = useDispatch()
+  const isAuthenticated = useSelector((state:any) => state.auth.isAuthenticated)
+  const queryString = window.location.search
+  const urlParams = new URLSearchParams(queryString)
+  const code = urlParams.get('code')
+
+
+  useEffect(() => {
+    if(localStorage.getItem('accessToken')){
+      dispatch(authActions.login())
+    }else{
+      if(code){
+        dispatch(getAccessToken(code))
+      }
+    }
+  },[dispatch,code])
+
+  useEffect(() => {
+    if(isAuthenticated){
+      dispatch(getUserDetails())
+    }
+  },[isAuthenticated,dispatch])
+
+  const loginWithGithub = () => {
+    window.location.assign('https://github.com/login/oauth/authorize?client_id=' + CLIENT_ID)
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header loginWithGithub={loginWithGithub}/>
     </div>
   );
 }
