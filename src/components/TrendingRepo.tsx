@@ -29,13 +29,13 @@ const TrendingRepo = () => {
     }
 
     return (
-    <div className='px-[17%] max-md:px-[10%] max-sm:px-[5%]'>
+    <div className='px-[17%] max-md:px-[10%] max-sm:px-[5%]  min-h-screen'>
         <div className='flex items-center h-[60px]'>
-            <p className='text-2xl font-semibold text-left'>Trending Repositories</p>
+            <p className='text-2xl font-semibold text-left dark:text-[#11710d]'>Trending Repositories</p>
             <div className='flex-1'></div>
             <div className='inline flex items-center'>
-                <p className='px-3'>Sort by</p>
-                <select defaultValue={'none'} className='p-1 rounded' onChange={handleSortBy}>
+                <p className='px-3  dark:text-[#11710d]'>Sort by</p>
+                <select defaultValue={'none'} className='p-1 rounded dark:text-[#11710d]' onChange={handleSortBy}>
                     <option value='none'>None</option>
                     <option value='repository'>Repository Name</option>
                     <option value='language'>Language</option>
@@ -47,14 +47,14 @@ const TrendingRepo = () => {
         {fetching &&  <span className='flex justify-center mt-[15%]'><Loading/></span>}
         {!fetching && trendingRepos?.length > 0 && <>{
             trendingRepos.map((repo:any,index:number) => (
-            <div key={index} className='shadow-lg flex flex-col items-start p-3 my-6'>
-                <Link to={`${repo.organisation}/${repo.repository}`}><p className='text-xl flex items-center mb-2 font-semibold truncate'><img src={repoIcon} className='h-[20px] px-3'  alt="repo"/>{repo.repository}</p></Link>
-                <p className='text-xl flex items-center mb-2'><img src={organisation} className='h-[20px] px-3 truncate'  alt="org"/>{repo.organisation}</p>
+            <div key={index} className='shadow-lg flex flex-col items-start p-3 my-6 dark:bg-[#0f172a]'>
+                <Link to={`${repo.organisation}/${repo.repository}`}><p className='text-xl flex items-center mb-2 font-semibold truncate dark:text-[#fcfcfc]'><img src={repoIcon} className='h-[20px] px-3'  alt="repo"/>{repo.repository}</p></Link>
+                <p className='text-xl flex items-center mb-2 dark:text-[#fcfcfc]'><img src={organisation} className='h-[20px] px-3 truncate'  alt="org"/>{repo.organisation}</p>
                 <p className='text-base flex items-center mb-2'></p>
                 <div className='flex'>
-                    <span className='flex items-center pr-3'><img src={lanIcon} className='h-[15px] px-3' alt="lan"/>{repo.language}</span>
-                    <span className='flex items-center px-3'><img src={starIcon} className='h-[15px] inline px-2' alt="star"/>{repo.stars} &nbsp;</span>
-                    <span className='flex items-center px-3'><img src={forkIcon} className='h-[15px] inline'  alt="forks"/>{repo.forks}</span>
+                    <span className='flex items-center pr-3 dark:text-[#fcfcfc]'><img src={lanIcon} className='h-[15px] px-3' alt="lan"/>{repo.language}</span>
+                    <span className='flex items-center px-3 dark:text-[#fcfcfc]'><img src={starIcon} className='h-[15px] inline px-2' alt="star"/>{repo.stars} &nbsp;</span>
+                    <span className='flex items-center px-3 dark:text-[#fcfcfc]'><img src={forkIcon} className='h-[15px] inline'  alt="forks"/>{repo.forks}</span>
                 </div>
             </div>))
         }</>}

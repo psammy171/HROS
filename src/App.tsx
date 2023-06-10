@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from './components/Header';
 import { useDispatch, useSelector } from 'react-redux';
 import { authActions } from './store/AuthSlice';
@@ -17,7 +17,7 @@ const App = () => {
   const queryString = window.location.search
   const urlParams = new URLSearchParams(queryString)
   const code = urlParams.get('code')
-
+  const [mode,setMode] = useState(localStorage.getItem('mode') || '')
 
   useEffect(() => {
     if(localStorage.getItem('accessToken')){
@@ -35,15 +35,27 @@ const App = () => {
     }
   },[isAuthenticated,dispatch])
 
+  const toggleMode = () => {
+    if(mode === ''){
+      setMode('dark')
+      localStorage.setItem('mode','dark')
+    }else{
+      setMode('')
+      localStorage.setItem('mode','')
+    }
+  }
+
   return (
-    <div>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home/>}/>
-        <Route path="/repo" element={<TrendingRepo/>}/>
-        <Route path="repo/:organisation/:repository" element={<RepoDetail/>}/>
-        <Route path="/*" element={<NotFound/>}/>
-      </Routes>
+    <div className={mode}>
+      <div className='bg-white dark:bg-[#1e293b]'>
+        <Header toggleMode={toggleMode} mode={mode}/>
+        <Routes>
+          <Route path="/" element={<Home/>}/>
+          <Route path="/repo" element={<TrendingRepo/>}/>
+          <Route path="repo/:organisation/:repository" element={<RepoDetail/>}/>
+          <Route path="/*" element={<NotFound/>}/>
+        </Routes>
+      </div>
     </div>
   );
 }
