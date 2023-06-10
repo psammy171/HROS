@@ -8,6 +8,7 @@ import { Routes, Route } from 'react-router-dom';
 import Home from './components/Home';
 import TrendingRepo from './components/TrendingRepo';
 import RepoDetail from './components/RepoDetail';
+import NotFound from './components/NotFound';
 
 
 const App = () => {
@@ -41,6 +42,7 @@ const App = () => {
         <Route path="/" element={<Home/>}/>
         <Route path="/trending" element={<TrendingRepo/>}/>
         <Route path="/:organisation/:repository" element={<RepoDetail/>}/>
+        <Route path="/*" element={<NotFound/>}/>
       </Routes>
     </div>
   );
