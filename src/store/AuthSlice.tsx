@@ -31,7 +31,6 @@ export const getAccessToken:any = (code:String) => {
             method:'GET',
         })
         .then(response => {
-            console.log("res",response)
             if(response.ok){
                 return response.json()
             }
@@ -58,7 +57,6 @@ export const getUserDetails:any = () => {
         }).then(res => res.json())
         .then(data => {
             dispatch(authActions.setName({userName:data.name,avatarLink:data.avatar_url}))
-            console.log("Data",data)
         })
     }
 }

@@ -8,6 +8,7 @@ import { getUserDetails } from './store/AuthSlice';
 import { Routes, Route} from 'react-router-dom';
 import Home from './components/Home';
 import TrendingRepo from './components/TrendingRepo';
+import RepoDetail from './components/RepoDetail';
 
 
 const App = () => {
@@ -40,6 +41,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/trending" element={<TrendingRepo/>}/>
+        <Route path="/:organisation/:repository" element={<RepoDetail/>}/>
       </Routes>
     </div>
   );

@@ -22,6 +22,7 @@ const Header = () => {
 
     return (<div>
         {accessToken && <>
+            <Link to="/">Home</Link>
             <h2>{userName}</h2>
             <img width="40px" height="40px" src={userAvatar} alt="avatar"/>
             <Link to="/" onClick={() => logout()}>Logout</Link>
