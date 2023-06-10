@@ -8,7 +8,7 @@ This project is implemented with React and typescript and Redux toolkit. For sty
 
 ## Running the project
 
-Before running this project, download the server from here. And run the server. For running the server follow the instruction provided in the README.md of server.  
+Before running this project,we need start the server first. Download the server from [here](https://github.com/psammy171/hros-server) and run the server. For running the server follow the instruction provided in the README.md of server.  
   
 After starting the server open command promt in project directory. Run ```npm install```. And after that run ```npm start```. After running both commands application should be up and running on port 3000
 
